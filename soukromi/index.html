@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kuchař – zásady ochrany soukromí</title>
+  <style>
+    :root { --primary: #5B3A7A; --on-primary: #F3EEF8; --background: #F3EEF8; --text: #2B2230; }
+    @media (prefers-color-scheme: dark) {
+      :root { --primary: #B79BD6; --on-primary: #1E1526; --background: #1E1526; --text: #F3EEF8; }
+    }
+    body {
+      margin: 0; background: var(--background); color: var(--text);
+      font: 18px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    header { background: var(--primary); color: var(--on-primary); padding: 20px 16px; }
+    header h1 { margin: 0; font-size: 24px; }
+    main { max-width: 680px; margin: 0 auto; padding: 16px; }
+    h2 { font-size: 20px; margin: 28px 0 8px; border-left: 4px solid var(--primary); padding-left: 10px; }
+    li { margin: 4px 0; }
+    a { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <header><h1>Kuchař – zásady ochrany soukromí</h1></header>
+  <main>
+    <p>Kuchař je soukromá rodinná kuchařka pro úzký okruh rodiny a přátel. Tady je popsané,
+      jaké údaje aplikace ukládá, kdo k nim má přístup a jak je smazat.</p>
+    <p>Platné od 1. 11. 2026.</p>
+
+    <h2>Kdo aplikaci provozuje</h2>
+    <p>Michal Novák, e-mail <a href="mailto:michalnovak78@gmail.com">michalnovak78@gmail.com</a>.
+      Na tuto adresu pište všechny dotazy a žádosti týkající se vašich údajů.</p>
+
+    <h2>Jaké údaje Kuchař ukládá</h2>
+    <ul>
+      <li><strong>Z účtu Google při přihlášení:</strong> jméno a e-mailová adresa. Heslo k účtu
+        Google aplikace nikdy nevidí.</li>
+      <li><strong>Profil:</strong> oslovení, rod (kvůli správnému tvaru oslovení), jazyk, obvyklý
+        počet porcí, dietní poznámky a oblíbené styly vaření.</li>
+      <li><strong>Domácnost:</strong> jména nebo přezdívky členů domácnosti, které zadáte, a co
+        mají rádi nebo nejedí.</li>
+      <li><strong>Recepty:</strong> texty receptů, jejich starší verze, fotky receptů, oblíbené
+        recepty a záznamy „Uvařeno“ s poznámkami.</li>
+      <li><strong>Rodiny:</strong> členství v rodinách, role a pozvánky.</li>
+      <li><strong>AI kuchař:</strong> konverzace s kuchařem a záznam o spotřebě (počet zpracovaných
+        slov a cena), kvůli měsíčnímu limitu.</li>
+      <li><strong>Upozornění:</strong> identifikátor zařízení pro doručení upozornění – jen
+        u správce aplikace (upozornění na nové registrace).</li>
+    </ul>
+    <p>Časovače a stopky z režimu vaření zůstávají jen v telefonu.</p>
+
+    <h2>Kdo údaje vidí</h2>
+    <ul>
+      <li><strong>Soukromé recepty</strong> vidíte vy a správce vaší domovské rodiny, pokud ji
+        máte nastavenou. Aplikace vám vždy ukáže, kdo to je.</li>
+      <li><strong>Recepty sdílené do rodiny</strong> vidí členové té rodiny.</li>
+      <li>Členové rodiny vidí vaše jméno. Profil, domácnost a konverzace s kuchařem vidíte jen vy.</li>
+      <li><strong>Správce aplikace</strong> (Michal) schvaluje nové uživatele a vidí jejich jméno,
+        e-mail, stav účtu a spotřebu AI kuchaře. Obsah receptů ani konverzací ostatních v aplikaci
+        nevidí.</li>
+    </ul>
+
+    <h2>Kam se údaje posílají</h2>
+    <ul>
+      <li><strong>Supabase</strong> (servery v EU, Frankfurt) – databáze, přihlášení a fotky.</li>
+      <li><strong>Google</strong> – přihlášení účtem Google a doručování upozornění (Firebase Cloud
+        Messaging).</li>
+      <li><strong>Anthropic</strong> (AI model Claude) – když použijete AI kuchaře, pošle se mu
+        text konverzace, fotky nebo soubory s recepty a údaje z profilu a domácnosti potřebné pro
+        recept (oslovení, porce, co kdo nejí). Anthropic podle svých podmínek data z API
+        nepoužívá k trénování modelů.</li>
+      <li><strong>Expo</strong> – stahování aktualizací aplikace a doručování upozornění.</li>
+    </ul>
+    <p>Kuchař nezobrazuje reklamy, údaje neprodává a nepoužívá žádné sledování ani analytiku.</p>
+
+    <h2>Jak dlouho údaje uchováváme a jak je smazat</h2>
+    <p>Údaje uchováváme, dokud máte účet. Účet smažete přímo v aplikaci: <strong>Profil → Smazat
+      účet</strong>. Smaže se profil, domácnost, soukromé recepty, fotky, konverzace i ostatní
+      osobní údaje. Recepty sdílené do rodin můžete při mazání smazat, nebo je nechat rodině.
+      Smazání můžete požádat i e-mailem na adresu výše.</p>
+
+    <h2>Vaše práva</h2>
+    <p>Máte právo na přístup ke svým údajům, jejich opravu, výmaz a přenesení. Stačí napsat
+      e-mail. Pokud se domníváte, že s vašimi údaji nezacházíme správně, můžete se obrátit na
+      dozorový úřad (v Česku ÚOOÚ, na Slovensku Úrad na ochranu osobných údajov).</p>
+  </main>
+</body>
+</html>
