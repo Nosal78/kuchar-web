@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Pozvánka do Kuchaře</title>
+  <!-- Pozvánka do rodiny v aplikaci Kuchař. Stránka jen otevře aplikaci odkazem
+       kuchar://pozvanka/{kod} (WhatsApp ani e-mail z vlastního schématu klikací odkaz
+       neudělají). Žádná data, žádné klíče, nic se neodesílá. -->
+  <style>
+    :root {
+      --primary: #5B3A7A; --on-primary: #F3EEF8; --background: #F3EEF8; --surface: #FFFFFF;
+      --accent: #D9A441; --on-accent: #3A2350; --text: #2B2230; --muted: #6E6378; --border: #DDD3E6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #B79BD6; --on-primary: #1E1526; --background: #1E1526; --surface: #2A1E35;
+        --accent: #E0B45C; --on-accent: #1E1526; --text: #F3EEF8; --muted: #B8ADC4; --border: #3D2C4D;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--background); color: var(--text);
+      font: 18px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    header { background: var(--primary); color: var(--on-primary); padding: 20px 16px; }
+    header h1 { margin: 0; font-size: 24px; }
+    main { max-width: 560px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; display: grid; gap: 12px;
+    }
+    .button {
+      display: block; text-align: center; text-decoration: none; font-weight: 600;
+      background: var(--accent); color: var(--on-accent); border-radius: 12px;
+      min-height: 56px; padding: 16px 24px;
+    }
+    .code { font-size: 34px; font-weight: 600; letter-spacing: 4px; text-align: center; margin: 0; }
+    .muted { color: var(--muted); }
+    p { margin: 0; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header><h1>Kuchař – pozvánka do rodiny</h1></header>
+  <main>
+    <section class="card" id="pozvanka" hidden>
+      <p>Někdo z rodiny tě zve do rodinné kuchařky <strong>Kuchař</strong>.</p>
+      <a class="button" id="otevrit" href="#">Otevřít v Kuchaři</a>
+      <p id="neotevrel" hidden><strong>Kuchař se neotevřel.</strong> Možná ho ještě nemáš
+        nainstalovaný – napiš tomu, kdo tě zve, ať ti pošle instalační odkaz.</p>
+    </section>
+    <section class="card" id="kod-karta" hidden>
+      <p>Když se Kuchař neotevře sám, otevři ho, klepni dole na <strong>Rodiny</strong>, pak na
+        <strong>Mám pozvánku</strong> a opiš tento kód:</p>
+      <p class="code" id="kod"></p>
+      <p class="muted">Pozvánka platí 7 dní a použít ji může jen jeden člověk.</p>
+    </section>
+    <section class="card" id="chyba" hidden>
+      <p>Tento odkaz na pozvánku je neúplný. Požádej o nový.</p>
+    </section>
+  </main>
+  <script>
+    (function () {
+      // Kód: 8 znaků bez snadno zaměnitelných (0/O, 1/I/L) – stejně jako v aplikaci.
+      var params = new URLSearchParams(location.search);
+      var code = (params.get('kod') || '').replace(/[\s-]/g, '').toUpperCase();
+      if (!/^[A-HJKMNP-Z2-9]{8}$/.test(code)) {
+        document.getElementById('chyba').hidden = false;
+        return;
+      }
+      // Vývojová varianta „Kuchař DEV“ má vlastní schéma odkazů.
+      var scheme = params.get('app') === 'dev' ? 'kuchar-dev' : 'kuchar';
+      var path = 'pozvanka/' + code;
+      var link = scheme + '://' + path;
+      if (/android/i.test(navigator.userAgent)) {
+        // Chrome a Samsung Internet otevřou aplikaci přes intent; když ji telefon nemá,
+        // vrátí se sem s #neni a ukážeme radu.
+        var back = location.href.split('#')[0] + '#neni';
+        link = 'intent://' + path + '#Intent;scheme=' + scheme +
+          ';S.browser_fallback_url=' + encodeURIComponent(back) + ';end';
+      }
+      document.getElementById('otevrit').href = link;
+      document.getElementById('kod').textContent = code.slice(0, 4) + ' ' + code.slice(4);
+      document.getElementById('pozvanka').hidden = false;
+      document.getElementById('kod-karta').hidden = false;
+      document.getElementById('neotevrel').hidden = location.hash !== '#neni';
+    })();
+  </script>
+</body>
+</html>
