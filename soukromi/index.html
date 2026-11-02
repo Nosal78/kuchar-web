@@ -26,7 +26,7 @@
   <main>
     <p>Kuchař je soukromá rodinná kuchařka pro úzký okruh rodiny a přátel. Tady je popsané,
       jaké údaje aplikace ukládá, kdo k nim má přístup a jak je smazat.</p>
-    <p>Platné od 1. 11. 2026.</p>
+    <p>Platné od 1. 11. 2026, aktualizováno 5. 11. 2026 (záloha na Google Disk, recepty v telefonu).</p>
 
     <h2>Kdo aplikaci provozuje</h2>
     <p>Michal Novák, e-mail <a href="mailto:michalnovak78@gmail.com">michalnovak78@gmail.com</a>.
@@ -47,8 +47,13 @@
         slov a cena), kvůli měsíčnímu limitu.</li>
       <li><strong>Upozornění:</strong> identifikátor zařízení pro doručení upozornění – jen
         u správce aplikace (upozornění na nové registrace).</li>
+      <li><strong>Záloha na Google Disk</strong> (jen když ji v Profilu zapnete): e-mail účtu Google,
+        ke kterému je Disk připojený, a přístupový klíč, kterým Kuchař ukládá zálohy. Kuchař na
+        vašem Disku vidí jen soubory, které sám vytvořil (složka „Kuchař – záloha“).</li>
     </ul>
-    <p>Časovače a stopky z režimu vaření zůstávají jen v telefonu.</p>
+    <p>Časovače a stopky z režimu vaření zůstávají jen v telefonu. Aby šly recepty číst i bez
+      internetu, drží si aplikace v telefonu kopii receptů, které vidíte; odhlášením se smaže.
+      PDF receptu vzniká v telefonu a posíláte ho jen vy.</p>
 
     <h2>Kdo údaje vidí</h2>
     <ul>
@@ -65,8 +70,8 @@
     <h2>Kam se údaje posílají</h2>
     <ul>
       <li><strong>Supabase</strong> (servery v EU, Frankfurt) – databáze, přihlášení a fotky.</li>
-      <li><strong>Google</strong> – přihlášení účtem Google a doručování upozornění (Firebase Cloud
-        Messaging).</li>
+      <li><strong>Google</strong> – přihlášení účtem Google, doručování upozornění (Firebase Cloud
+        Messaging) a – pokud ji zapnete – záloha vašich receptů na váš Google Disk.</li>
       <li><strong>Anthropic</strong> (AI model Claude) – když použijete AI kuchaře, pošle se mu
         text konverzace, fotky nebo soubory s recepty a údaje z profilu a domácnosti potřebné pro
         recept (oslovení, porce, co kdo nejí). Anthropic podle svých podmínek data z API
@@ -79,7 +84,11 @@
     <p>Údaje uchováváme, dokud máte účet. Účet smažete přímo v aplikaci: <strong>Profil → Smazat
       účet</strong>. Smaže se profil, domácnost, soukromé recepty, fotky, konverzace i ostatní
       osobní údaje. Recepty sdílené do rodin můžete při mazání smazat, nebo je nechat rodině.
-      Smazání můžete požádat i e-mailem na adresu výše.</p>
+      Smazání můžete požádat i e-mailem na adresu výše. Zálohy na vašem Google Disku zůstávají
+      vaše – smažete je tam sami.</p>
+    <p>Jednou týdně se dělá záloha celého serveru (databáze a fotky) na Google Disk provozovatele
+      kvůli obnově po havárii. Drží se 8 posledních, takže smazané údaje ze záloh zmizí nejpozději
+      zhruba do dvou měsíců.</p>
 
     <h2>Vaše práva</h2>
     <p>Máte právo na přístup ke svým údajům, jejich opravu, výmaz a přenesení. Stačí napsat
