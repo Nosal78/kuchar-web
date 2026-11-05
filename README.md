@@ -6,6 +6,8 @@ proto tu nejsou žádná data ani klíče.
 
 - `pozvanka/?kod=ABCD2345` – otevře aplikaci odkazem `kuchar://pozvanka/ABCD2345`
   (s `&app=dev` vývojovou variantu `kuchar-dev://`), jinak ukáže kód k opsání.
+- `navod/` – návod k instalaci pro rodinu s tlačítkem ke stažení APK (odkaz na verzi
+  aktualizovat při každém vydání – DISTRIBUCE §7).
 - `soukromi/` – zásady ochrany soukromí (odkaz pro Google přihlášení a Google Play).
 - `ucet-smazat/` – jak smazat účet a údaje, i bez aplikace (požadavek Google Play, Fáze 11).
 
